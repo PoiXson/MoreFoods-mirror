@@ -7,3 +7,13 @@ depend:
 authors: [ lorenzop ]
 website: ${project.url}
 description: ${project.description}
+permission-message: "You don't have permission to use this command."
+permissions:
+    foodrot.*:
+        default: op
+        description: Gives access to all foodrot commands
+        children:
+            foodrot.aging: true
+    foodrot.aging:
+        default: true
+        description: Food stored in a players inventory or hotbar will age
