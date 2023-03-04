@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated: Sat Mar  4 06:13:01 AM EST 2023 -->
+<!-- Generated: Sat Mar  4 03:28:48 PM EST 2023 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -61,6 +61,14 @@
 				<includes>
 					<include>plugin.yml</include>
 					<include>app.properties</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>resources/</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>FoodRot-resourcepack.zip</include>
+					<include>FoodRot-resourcepack.sha1</include>
 				</includes>
 			</resource>
 		</resources>
