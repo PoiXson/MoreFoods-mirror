@@ -20,6 +20,8 @@ import com.poixson.tools.xTime;
 
 
 public class FoodRotPlugin extends xJavaPlugin {
+	@Override public int getSpigotPluginID() { return 108357; }
+	@Override public int getBStatsID() {       return 17853;  }
 	public static final String LOG_PREFIX  = "[FoodRot] ";
 	public static final String CHAT_PREFIX = ChatColor.AQUA + "[Food] " + ChatColor.WHITE;
 
@@ -32,9 +34,6 @@ public class FoodRotPlugin extends xJavaPlugin {
 	protected final AtomicReference<FoodRotListener> eatListener = new AtomicReference<FoodRotListener>(null);
 
 	protected final Map<Material, Set<ItemRotDAO>> foods = new HashMap<Material, Set<ItemRotDAO>>();
-
-	@Override public int getSpigotPluginID() { return 108357; }
-	@Override public int getBStatsID() {       return 17853;  }
 
 
 
