@@ -25,7 +25,7 @@ public class FoodRotPlugin extends xJavaPlugin {
 	public static final String LOG_PREFIX  = "[FoodRot] ";
 	public static final String CHAT_PREFIX = ChatColor.AQUA + "[Food] " + ChatColor.WHITE;
 
-	public static final long DEFAULT_AGING_INTERVAL = xTime.Parse("5m").ticks(50L);
+	public static final String DEFAULT_AGING_INTERVAL = "5m";
 	public static final double DEFAULT_AGING_CHANCE = 0.164; // about one stage every 2.5 hours
 	public static final int    DEFAULT_AGING_DELAY  = 5;
 
@@ -148,8 +148,8 @@ public class FoodRotPlugin extends xJavaPlugin {
 
 	@Override
 	protected void configDefaults(final FileConfiguration cfg) {
-		cfg.addDefault("Interval", Long.valueOf(DEFAULT_AGING_INTERVAL));
-		cfg.addDefault("Chance", Double.valueOf(DEFAULT_AGING_CHANCE  ));
+		cfg.addDefault("Interval", DEFAULT_AGING_INTERVAL);
+		cfg.addDefault("Chance", Double.valueOf(DEFAULT_AGING_CHANCE));
 	}
 	protected void foodsDefaults(final FileConfiguration cfg) {
 		// apple
@@ -184,7 +184,7 @@ public class FoodRotPlugin extends xJavaPlugin {
 
 
 	public long getAgingInterval() {
-		return this.config.get().getLong("Interval");
+		return xTime.Parse( this.config.get().getString("Interval") ).ticks(50L);
 	}
 	public double getAgingChance() {
 		return this.config.get().getDouble("Chance");
