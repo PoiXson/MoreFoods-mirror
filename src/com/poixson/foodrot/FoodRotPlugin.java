@@ -155,20 +155,18 @@ public class FoodRotPlugin extends xJavaPlugin {
 		// apple
 		{
 			List<Map<String, Object>> states = new ArrayList<Map<String, Object>>();
-			states.add(this.foodDefault(cfg, "Apple",          0,  8, DEFAULT_AGING_DELAY));
-			states.add(this.foodDefault(cfg, "Rotting Apple",  8,  9, DEFAULT_AGING_DELAY));
-			states.add(this.foodDefault(cfg, "Rotting Apple",  9, 10, DEFAULT_AGING_DELAY));
-			states.add(this.foodDefault(cfg, "Rotting Apple", 10, 11, DEFAULT_AGING_DELAY));
-			states.add(this.foodDefault(cfg, "Rotting Apple", 11       ));
+			states.add(this.foodDefault("Apple",          0,  8, DEFAULT_AGING_DELAY));
+			states.add(this.foodDefault("Unfresh Apple",  8,  9, DEFAULT_AGING_DELAY));
+			states.add(this.foodDefault("Rotting Apple",  9, 10, DEFAULT_AGING_DELAY));
+			states.add(this.foodDefault("Rotting Apple", 10, 11, DEFAULT_AGING_DELAY));
+			states.add(this.foodDefault("Rotting Apple", 11                         ));
 			cfg.set("APPLE", states);
 		}
 	}
-	protected Map<String, Object> foodDefault(final FileConfiguration cfg,
-			final String name, final int model) {
-		return this.foodDefault(cfg, name, model, -1, -1);
+	protected Map<String, Object> foodDefault(final String name, final int model) {
+		return this.foodDefault(name, model, -1, -1);
 	}
-	protected Map<String, Object> foodDefault(final FileConfiguration cfg,
-			final String name, final int model, final int next, final int delay) {
+	protected Map<String, Object> foodDefault(final String name, final int model, final int next, final int delay) {
 		final Map<String, Object> map = new HashMap<String, Object>();
 		map.put("name",  name);
 		map.put("model", Integer.valueOf(model));
