@@ -26,7 +26,7 @@ public class FoodRotPlugin extends xJavaPlugin {
 	public static final String CHAT_PREFIX = ChatColor.AQUA + "[Food] " + ChatColor.WHITE;
 
 	public static final long DEFAULT_AGING_INTERVAL = xTime.Parse("5m").ticks(50L);
-	public static final double DEFAULT_AGING_CHANCE = 0.082; // about one stage every 5 hours
+	public static final double DEFAULT_AGING_CHANCE = 0.164; // about one stage every 2.5 hours
 	public static final int    DEFAULT_AGING_DELAY  = 5;
 
 	// listeners
