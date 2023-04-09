@@ -159,7 +159,7 @@ public class FoodRotPlugin extends xJavaPlugin {
 			states.add(this.foodDefault("Unfresh Apple",  8,  9, DEFAULT_AGING_DELAY));
 			states.add(this.foodDefault("Rotting Apple",  9, 10, DEFAULT_AGING_DELAY));
 			states.add(this.foodDefault("Rotting Apple", 10, 11, DEFAULT_AGING_DELAY));
-			states.add(this.foodDefault("Rotting Apple", 11                         ));
+			states.add(this.foodDefault("Rotten Apple",  11                         ));
 			cfg.set("APPLE", states);
 		}
 	}
