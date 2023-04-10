@@ -1,4 +1,4 @@
-package com.poixson.foodrot;
+package com.poixson.morefoods;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -23,31 +23,31 @@ import com.poixson.tools.abstractions.xStartStop;
 import com.poixson.utils.RandomUtils;
 
 
-public class FoodRotHandler extends BukkitRunnable implements xStartStop {
+public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 
 	protected static final long START_DELAY_TICKS = 200L; // 10 seconds
 
-	protected final FoodRotPlugin plugin;
+	protected final MoreFoodsPlugin plugin;
 
 	protected final long interval;
 	protected final int  chance;
 	protected final AtomicInteger rndLast = new AtomicInteger(-1);
 
-	public final Map<Material, Set<ItemRotDAO>> foods;
+	public final Map<Material, Set<CustomFoodDAO>> foods;
 
 
 
-	public FoodRotHandler(final FoodRotPlugin plugin,
+	public FoodAgeHandler(final MoreFoodsPlugin plugin,
 			final long interval, final double chance,
-			final Map<Material, Set<ItemRotDAO>> foods) {
+			final Map<Material, Set<CustomFoodDAO>> foods) {
 		this.plugin   = plugin;
 		this.interval = interval;
 		this.chance   = (int) (1.0 / chance);
 		this.foods    = foods;
 	}
-	public FoodRotHandler(final FoodRotPlugin plugin,
+	public FoodAgeHandler(final MoreFoodsPlugin plugin,
 			final long interval, final double chance) {
-		this(plugin, interval, chance, new HashMap<Material, Set<ItemRotDAO>>());
+		this(plugin, interval, chance, new HashMap<Material, Set<CustomFoodDAO>>());
 	}
 
 
@@ -67,21 +67,21 @@ public class FoodRotHandler extends BukkitRunnable implements xStartStop {
 
 	public void addFood(final Material type, final String name,
 			final int model_from, final int model_to, final int threshold) {
-		this.addFood(new ItemRotDAO(type, name, model_from, model_to, threshold));
+		this.addFood(new CustomFoodDAO(type, name, model_from, model_to, threshold));
 	}
-	public void addFood(final ItemRotDAO dao) {
-		Set<ItemRotDAO> set = this.foods.get(dao.type);
+	public void addFood(final CustomFoodDAO dao) {
+		Set<CustomFoodDAO> set = this.foods.get(dao.type);
 		if (set == null) {
-			set = new HashSet<ItemRotDAO>();
+			set = new HashSet<CustomFoodDAO>();
 			this.foods.put(dao.type, set);
 		}
 		set.add(dao);
 	}
-	public ItemRotDAO getFoodDAO(final ItemStack stack) {
-		final Set<ItemRotDAO> set = this.foods.get(stack.getType());
+	public CustomFoodDAO getFoodDAO(final ItemStack stack) {
+		final Set<CustomFoodDAO> set = this.foods.get(stack.getType());
 		if (set != null) {
 			final int model = ItemUtils.GetCustomModel(stack);
-			for (final ItemRotDAO dao : set) {
+			for (final CustomFoodDAO dao : set) {
 				if (dao.model == model)
 					return dao;
 			}
@@ -94,7 +94,7 @@ public class FoodRotHandler extends BukkitRunnable implements xStartStop {
 	@Override
 	public void run() {
 		for (final Player player : Bukkit.getOnlinePlayers()) {
-			if (player.hasPermission("foodrot.aging")) {
+			if (player.hasPermission("morefoods.aging")) {
 				final PlayerInventory inventory = player.getInventory();
 				boolean changed = false;
 				for (final ItemStack stack : inventory.getStorageContents()) {
@@ -118,7 +118,7 @@ public class FoodRotHandler extends BukkitRunnable implements xStartStop {
 			if (rnd != 0) return false;
 		}
 		// age the food
-		final ItemRotDAO dao = this.getFoodDAO(stack);
+		final CustomFoodDAO dao = this.getFoodDAO(stack);
 		if (dao != null) {
 			// last stage
 			if (dao.next < 0) return false;

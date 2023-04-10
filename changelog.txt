@@ -1,4 +1,4 @@
-FoodRot - Food ages and rots
+MoreFoods - Adds more foods and food aging
 
 
 2023-03-04 - 0.1.1

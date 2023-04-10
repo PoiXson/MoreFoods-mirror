@@ -1,13 +1,13 @@
-package com.poixson.foodrot;
+package com.poixson.morefoods;
 
 import com.poixson.commonmc.tools.plugin.xListener;
 
 
-public class FoodRotListener extends xListener<FoodRotPlugin> {
+public class FoodEatListener extends xListener<MoreFoodsPlugin> {
 
 
 
-	public FoodRotListener(final FoodRotPlugin plugin) {
+	public FoodEatListener(final MoreFoodsPlugin plugin) {
 		super(plugin);
 	}
 

@@ -1,5 +1,5 @@
 name: ${project.name}
-main: com.poixson.foodrot.FoodRotPlugin
+main: com.poixson.morefoods.MoreFoodsPlugin
 version: ${project.version}
 api-version: ${spigot-short-version}
 depend:
@@ -9,11 +9,11 @@ website: ${project.url}
 description: ${project.description}
 permission-message: "You don't have permission to use this command."
 permissions:
-    foodrot.*:
+    morefoods.*:
         default: op
-        description: Gives access to all foodrot commands
+        description: Gives access to all food commands
         children:
-            foodrot.aging: true
-    foodrot.aging:
+            morefoods.aging: true
+    morefoods.aging:
         default: true
         description: Food stored in a players inventory or hotbar will age

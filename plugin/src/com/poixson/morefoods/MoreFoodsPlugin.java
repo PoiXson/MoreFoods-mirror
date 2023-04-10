@@ -1,4 +1,4 @@
-package com.poixson.foodrot;
+package com.poixson.morefoods;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,26 +19,26 @@ import com.poixson.commonmc.tools.plugin.xJavaPlugin;
 import com.poixson.tools.xTime;
 
 
-public class FoodRotPlugin extends xJavaPlugin {
+public class MoreFoodsPlugin extends xJavaPlugin {
 	@Override public int getSpigotPluginID() { return 108357; }
 	@Override public int getBStatsID() {       return 17853;  }
-	public static final String LOG_PREFIX  = "[FoodRot] ";
-	public static final String CHAT_PREFIX = ChatColor.AQUA + "[Food] " + ChatColor.WHITE;
+	public static final String LOG_PREFIX  = "[Foods] ";
+	public static final String CHAT_PREFIX = ChatColor.AQUA + "[Foods] " + ChatColor.WHITE;
 
 	public static final String DEFAULT_AGING_INTERVAL = "5m";
 	public static final double DEFAULT_AGING_CHANCE = 0.164; // about one stage every 2.5 hours
 	public static final int    DEFAULT_AGING_DELAY  = 5;
 
 	// listeners
-	protected final AtomicReference<FoodRotHandler>  rotHandler  = new AtomicReference<FoodRotHandler>(null);
-	protected final AtomicReference<FoodRotListener> eatListener = new AtomicReference<FoodRotListener>(null);
+	protected final AtomicReference<FoodAgeHandler>  ageHandler  = new AtomicReference<FoodAgeHandler>(null);
+	protected final AtomicReference<FoodEatListener> eatListener = new AtomicReference<FoodEatListener>(null);
 
-	protected final Map<Material, Set<ItemRotDAO>> foods = new HashMap<Material, Set<ItemRotDAO>>();
+	protected final Map<Material, Set<CustomFoodDAO>> foods = new HashMap<Material, Set<CustomFoodDAO>>();
 
 
 
-	public FoodRotPlugin() {
-		super(FoodRotPlugin.class);
+	public MoreFoodsPlugin() {
+		super(MoreFoodsPlugin.class);
 	}
 
 
@@ -46,20 +46,20 @@ public class FoodRotPlugin extends xJavaPlugin {
 	@Override
 	public void onEnable() {
 		super.onEnable();
-		// rot handler
+		// age handler
 		{
 			final long interval = this.getAgingInterval();
 			final double chance = this.getAgingChance();
-			final FoodRotHandler listener = new FoodRotHandler(this, interval, chance, this.foods);
-			final FoodRotHandler previous = this.rotHandler.getAndSet(listener);
+			final FoodAgeHandler listener = new FoodAgeHandler(this, interval, chance, this.foods);
+			final FoodAgeHandler previous = this.ageHandler.getAndSet(listener);
 			if (previous != null)
 				previous.stop();
 			listener.start();
 		}
 		// eat listener
 		{
-			final FoodRotListener listener = new FoodRotListener(this);
-			final FoodRotListener previous = this.eatListener.getAndSet(listener);
+			final FoodEatListener listener = new FoodEatListener(this);
+			final FoodEatListener previous = this.eatListener.getAndSet(listener);
 			if (previous != null)
 				previous.unregister();
 			listener.register();
@@ -69,15 +69,15 @@ public class FoodRotPlugin extends xJavaPlugin {
 	@Override
 	public void onDisable() {
 		super.onDisable();
-		// rot handler
+		// age handler
 		{
-			final FoodRotHandler listener = this.rotHandler.getAndSet(null);
+			final FoodAgeHandler listener = this.ageHandler.getAndSet(null);
 			if (listener != null)
 				listener.stop();
 		}
 		// eat listener
 		{
-			final FoodRotListener listener = this.eatListener.getAndSet(null);
+			final FoodEatListener listener = this.eatListener.getAndSet(null);
 			if (listener != null)
 				listener.unregister();
 		}
@@ -118,14 +118,14 @@ public class FoodRotPlugin extends xJavaPlugin {
 			int count_states = 0;
 			for (final String key : cfg.getKeys(false)) {
 				final Material type = Material.getMaterial(key);
-				final HashSet<ItemRotDAO> states = new HashSet<ItemRotDAO>();
+				final HashSet<CustomFoodDAO> states = new HashSet<CustomFoodDAO>();
 				final List<Map<String, Object>> list = Safe_GetStatesList(cfg, key);
 				for (final Map<String, Object> map : list) {
 					final String name    = (String) map.get("name");
 					final int model = ((Integer)map.get("model")).intValue();
 					final int next  = (map.containsKey("next" ) ? ((Integer)map.get("next" )).intValue() :-1);
 					final int delay = (map.containsKey("delay") ? ((Integer)map.get("delay")).intValue() : 1);
-					final ItemRotDAO dao = new ItemRotDAO(type, name, model, next, delay);
+					final CustomFoodDAO dao = new CustomFoodDAO(type, name, model, next, delay);
 					states.add(dao);
 					count_states++;
 				}

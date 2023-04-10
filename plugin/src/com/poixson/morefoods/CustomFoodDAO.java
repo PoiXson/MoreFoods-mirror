@@ -1,9 +1,9 @@
-package com.poixson.foodrot;
+package com.poixson.morefoods;
 
 import org.bukkit.Material;
 
 
-public class ItemRotDAO {
+public class CustomFoodDAO {
 
 	public final Material type;
 	public final String name;
@@ -12,7 +12,7 @@ public class ItemRotDAO {
 
 
 
-	public ItemRotDAO(final Material type, final String name,
+	public CustomFoodDAO(final Material type, final String name,
 			final int model, final int next, final int delay) {
 		this.type  = type;
 		this.name  = name;

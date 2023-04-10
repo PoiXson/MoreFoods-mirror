@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated: Tue Mar 21 11:41:09 PM EDT 2023 -->
+<!-- Generated: Mon Apr 10 02:41:00 AM EDT 2023 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<name>FoodRot</name>
-	<artifactId>foodrot</artifactId>
+	<name>MoreFoods</name>
+	<artifactId>morefoods</artifactId>
 	<groupId>com.poixson</groupId>
 	<version>0.1.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<url>https://poixson.com</url>
-	<description>Food ages and rots</description>
+	<description>Adds more foods and food aging</description>
 	<organization>
 		<name>PoiXson</name>
 		<url>https://poixson.com</url>
@@ -37,13 +37,13 @@
 
 	</properties>
 	<scm>
-		<url>https://git.poixson.com/summary/mc!FoodRot.git</url>
-		<connection>scm:git:https://git.poixson.com/r/mc/FoodRot.git</connection>
-		<developerConnection>scm:ssh://git.poixson.com/mc/FoodRot.git</developerConnection>
+		<url>https://git.poixson.com/summary/mc!MoreFoods.git</url>
+		<connection>scm:git:https://git.poixson.com/r/mc/MoreFoods.git</connection>
+		<developerConnection>scm:ssh://git.poixson.com/mc/MoreFoods.git</developerConnection>
 	</scm>
 	<issueManagement>
 		<system>pxngit</system>
-		<url>https://git.poixson.com/tickets/mc!FoodRot.git</url>
+		<url>https://git.poixson.com/tickets/mc!MoreFoods.git</url>
 	</issueManagement>
 	<ciManagement>
 		<system>pxnJenkins</system>
@@ -61,14 +61,6 @@
 				<includes>
 					<include>plugin.yml</include>
 					<include>app.properties</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>resources/</directory>
-				<filtering>false</filtering>
-				<includes>
-					<include>FoodRot-resourcepack.zip</include>
-					<include>FoodRot-resourcepack.sha1</include>
 				</includes>
 			</resource>
 		</resources>

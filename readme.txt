@@ -1,4 +1,4 @@
-FoodRot - Food ages and rots
+MoreFoods - Adds more foods and food aging
 
 
 time to age one stage = (1.0 / chance ) * interval * delay
