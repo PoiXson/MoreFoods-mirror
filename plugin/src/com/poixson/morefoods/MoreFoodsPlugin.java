@@ -157,7 +157,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 			List<Map<String, Object>> states = new ArrayList<Map<String, Object>>();
 			states.add(this.foodDefault("Apple",          0,  8, DEFAULT_AGING_DELAY));
 			states.add(this.foodDefault("Unfresh Apple",  8,  9, DEFAULT_AGING_DELAY));
-			states.add(this.foodDefault("Rotting Apple",  9, 10, DEFAULT_AGING_DELAY));
+			states.add(this.foodDefault("Old Apple",      9, 10, DEFAULT_AGING_DELAY));
 			states.add(this.foodDefault("Rotting Apple", 10, 11, DEFAULT_AGING_DELAY));
 			states.add(this.foodDefault("Rotten Apple",  11                         ));
 			cfg.set("APPLE", states);
