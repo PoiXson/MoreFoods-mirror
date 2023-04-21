@@ -18,6 +18,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.poixson.commonmc.tools.plugin.xJavaPlugin;
 import com.poixson.commonmc.utils.ItemUtils;
+import com.poixson.morefoods.commands.Commands;
 import com.poixson.tools.xTime;
 
 
@@ -34,6 +35,8 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 	// listeners
 	protected final AtomicReference<FoodAgeHandler>  ageHandler  = new AtomicReference<FoodAgeHandler>(null);
 	protected final AtomicReference<FoodEatListener> eatListener = new AtomicReference<FoodEatListener>(null);
+
+	protected final AtomicReference<Commands> commands = new AtomicReference<Commands>(null);
 
 	protected final Map<Material, Set<CustomFoodDAO>> foods = new HashMap<Material, Set<CustomFoodDAO>>();
 
@@ -66,11 +69,25 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 				previous.unregister();
 			listener.register();
 		}
+		// commands
+		{
+			final Commands commands = new Commands(this);
+			final Commands previous = this.commands.getAndSet(commands);
+			if (previous != null)
+				previous.unregister();
+			commands.register();
+		}
 	}
 
 	@Override
 	public void onDisable() {
 		super.onDisable();
+		// commands
+		{
+			final Commands commands = this.commands.getAndSet(null);
+			if (commands != null)
+				commands.unregister();
+		}
 		// age handler
 		{
 			final FoodAgeHandler listener = this.ageHandler.getAndSet(null);
