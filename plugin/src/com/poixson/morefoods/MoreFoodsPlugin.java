@@ -14,8 +14,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ItemStack;
 
 import com.poixson.commonmc.tools.plugin.xJavaPlugin;
+import com.poixson.commonmc.utils.ItemUtils;
 import com.poixson.tools.xTime;
 
 
@@ -50,11 +52,11 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 		{
 			final long interval = this.getAgingInterval();
 			final double chance = this.getAgingChance();
-			final FoodAgeHandler listener = new FoodAgeHandler(this, interval, chance, this.foods);
-			final FoodAgeHandler previous = this.ageHandler.getAndSet(listener);
+			final FoodAgeHandler handler = new FoodAgeHandler(this, interval, chance);
+			final FoodAgeHandler previous = this.ageHandler.getAndSet(handler);
 			if (previous != null)
 				previous.stop();
-			listener.start();
+			handler.start();
 		}
 		// eat listener
 		{
@@ -200,6 +202,42 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 	}
 	public double getAgingChance() {
 		return this.config.get().getDouble("Chance");
+	}
+
+
+
+	// -------------------------------------------------------------------------------
+
+
+
+	public FoodAgeHandler getAgeHandler() {
+		return this.ageHandler.get();
+	}
+
+
+
+	public Set<CustomFoodDAO> getFood(final Material type) {
+		return this.foods.get(type);
+	}
+
+	public CustomFoodDAO getFoodDAO(final ItemStack stack) {
+		final Material type = stack.getType();
+		final int model = ItemUtils.GetCustomModel(stack);
+		return this.getFoodDAO(type, model);
+	}
+	public CustomFoodDAO getFoodDAO(final Material type, final int model) {
+		final Set<CustomFoodDAO> set = this.foods.get(type);
+		if (set != null) {
+			for (final CustomFoodDAO dao : set) {
+				if (dao.model == model)
+					return dao;
+			}
+		}
+		return null;
+	}
+
+	public boolean isSupportedFood(final ItemStack stack) {
+		return (this.foods.containsKey(stack.getType()));
 	}
 
 

@@ -1,13 +1,8 @@
 package com.poixson.morefoods;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -18,7 +13,6 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.poixson.commonmc.utils.ItemUtils;
 import com.poixson.tools.abstractions.xStartStop;
 import com.poixson.utils.RandomUtils;
 
@@ -33,21 +27,13 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 	protected final int  chance;
 	protected final AtomicInteger rndLast = new AtomicInteger(-1);
 
-	public final Map<Material, Set<CustomFoodDAO>> foods;
-
 
 
 	public FoodAgeHandler(final MoreFoodsPlugin plugin,
-			final long interval, final double chance,
-			final Map<Material, Set<CustomFoodDAO>> foods) {
+			final long interval, final double chance) {
 		this.plugin   = plugin;
 		this.interval = interval;
 		this.chance   = (int) (1.0 / chance);
-		this.foods    = foods;
-	}
-	public FoodAgeHandler(final MoreFoodsPlugin plugin,
-			final long interval, final double chance) {
-		this(plugin, interval, chance, new HashMap<Material, Set<CustomFoodDAO>>());
 	}
 
 
@@ -61,32 +47,6 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 		try {
 			this.cancel();
 		} catch (IllegalStateException ignore) {}
-	}
-
-
-
-	public void addFood(final Material type, final String name,
-			final int model_from, final int model_to, final int threshold) {
-		this.addFood(new CustomFoodDAO(type, name, model_from, model_to, threshold));
-	}
-	public void addFood(final CustomFoodDAO dao) {
-		Set<CustomFoodDAO> set = this.foods.get(dao.type);
-		if (set == null) {
-			set = new HashSet<CustomFoodDAO>();
-			this.foods.put(dao.type, set);
-		}
-		set.add(dao);
-	}
-	public CustomFoodDAO getFoodDAO(final ItemStack stack) {
-		final Set<CustomFoodDAO> set = this.foods.get(stack.getType());
-		if (set != null) {
-			final int model = ItemUtils.GetCustomModel(stack);
-			for (final CustomFoodDAO dao : set) {
-				if (dao.model == model)
-					return dao;
-			}
-		}
-		return null;
 	}
 
 
@@ -121,7 +81,7 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 	}
 	public boolean ageItem(final ItemStack stack) {
 		// age the food
-		final CustomFoodDAO dao = this.getFoodDAO(stack);
+		final CustomFoodDAO dao = this.plugin.getFoodDAO(stack);
 		if (dao != null) {
 			// last stage
 			if (dao.next < 0) return false;
