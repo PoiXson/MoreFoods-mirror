@@ -125,20 +125,20 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 			final ItemMeta meta = stack.getItemMeta();
 			final PersistentDataContainer persistent = meta.getPersistentDataContainer();
 			final NamespacedKey key = new NamespacedKey(this.plugin, "rotting");
-			int age = 0;
+			int current_factor = 0;
 			if (persistent.has(key, PersistentDataType.INTEGER)) {
 				final Integer value = persistent.get(key, PersistentDataType.INTEGER);
 				if (value != null)
-					age = value.intValue() + 1;
+					current_factor = value.intValue() + 1;
 			}
-			if (age >= dao.delay) {
-				age = 0;
+			if (current_factor >= dao.factor) {
+				current_factor = 0;
 				meta.setDisplayName(dao.name);
 				meta.setCustomModelData(Integer.valueOf(dao.next));
 			}
 //TODO: debug logs
 //System.out.println("MODEL: "+dao.model+" AGE: "+age);
-			persistent.set(key, PersistentDataType.INTEGER, Integer.valueOf(age));
+			persistent.set(key, PersistentDataType.INTEGER, Integer.valueOf(current_factor));
 			stack.setItemMeta(meta);
 			return true;
 		}

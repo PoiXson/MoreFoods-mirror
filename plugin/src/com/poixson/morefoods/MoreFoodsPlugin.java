@@ -26,8 +26,8 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 	public static final String CHAT_PREFIX = ChatColor.AQUA + "[Foods] " + ChatColor.WHITE;
 
 	public static final String DEFAULT_AGING_INTERVAL = "5m";
-	public static final double DEFAULT_AGING_CHANCE = 0.164; // about one stage every 2.5 hours
-	public static final int    DEFAULT_AGING_DELAY  = 5;
+	public static final double DEFAULT_AGING_CHANCE   = 0.164; // about one stage every 2.5 hours
+	public static final int    DEFAULT_AGING_FACTOR   = 5;
 
 	// listeners
 	protected final AtomicReference<FoodAgeHandler>  ageHandler  = new AtomicReference<FoodAgeHandler>(null);
@@ -155,11 +155,11 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 		// apple
 		{
 			List<Map<String, Object>> states = new ArrayList<Map<String, Object>>();
-			states.add(this.foodDefault("Apple",          0,  8, DEFAULT_AGING_DELAY));
-			states.add(this.foodDefault("Unfresh Apple",  8,  9, DEFAULT_AGING_DELAY));
-			states.add(this.foodDefault("Old Apple",      9, 10, DEFAULT_AGING_DELAY));
-			states.add(this.foodDefault("Rotting Apple", 10, 11, DEFAULT_AGING_DELAY));
-			states.add(this.foodDefault("Rotten Apple",  11                         ));
+			states.add(this.foodDefault("Apple",          0,  8, DEFAULT_AGING_FACTOR));
+			states.add(this.foodDefault("Unfresh Apple",  8,  9, DEFAULT_AGING_FACTOR));
+			states.add(this.foodDefault("Old Apple",      9, 10, DEFAULT_AGING_FACTOR));
+			states.add(this.foodDefault("Rotting Apple", 10, 11, DEFAULT_AGING_FACTOR));
+			states.add(this.foodDefault("Rotten Apple",  11                          ));
 			cfg.set("APPLE", states);
 		}
 		// corn
@@ -180,12 +180,12 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 	protected Map<String, Object> foodDefault(final String name, final int model) {
 		return this.foodDefault(name, model, -1, -1);
 	}
-	protected Map<String, Object> foodDefault(final String name, final int model, final int next, final int delay) {
+	protected Map<String, Object> foodDefault(final String name, final int model, final int next, final int factor) {
 		final Map<String, Object> map = new HashMap<String, Object>();
 		map.put("name",  name);
 		map.put("model", Integer.valueOf(model));
-		if (next  > 0) map.put("next",  Integer.valueOf(next ));
-		if (delay > 0) map.put("delay", Integer.valueOf(delay));
+		if (next   > 0) map.put("next",  Integer.valueOf(next  ));
+		if (factor > 0) map.put("delay", Integer.valueOf(factor));
 		return map;
 	}
 	@SuppressWarnings("unchecked")
