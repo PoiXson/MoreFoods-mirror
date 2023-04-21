@@ -133,7 +133,8 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 			}
 			if (current_factor >= dao.factor) {
 				current_factor = 0;
-				meta.setDisplayName(dao.name);
+				final CustomFoodDAO dao_new = this.plugin.getFoodDAO(stack.getType(), dao.next);
+				meta.setDisplayName(dao_new.name);
 				meta.setCustomModelData(Integer.valueOf(dao.next));
 			}
 //TODO: debug logs
