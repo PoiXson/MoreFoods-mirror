@@ -99,7 +99,7 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 				boolean changed = false;
 				for (final ItemStack stack : inventory.getStorageContents()) {
 					if (stack == null) continue;
-					if (this.ageItem(stack))
+					if (this.ageItemRandom(stack))
 						changed = true;
 				}
 				if (changed)
@@ -110,13 +110,16 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 
 
 
-	protected boolean ageItem(final ItemStack stack) {
+	public boolean ageItemRandom(final ItemStack stack) {
 		// random ticks
 		if (this.chance > 1) {
 			final int rnd = RandomUtils.GetNewRandom(0, this.chance * 1000, this.rndLast.get()) % this.chance;
 			this.rndLast.set(rnd);
 			if (rnd != 0) return false;
 		}
+		return this.ageItem(stack);
+	}
+	public boolean ageItem(final ItemStack stack) {
 		// age the food
 		final CustomFoodDAO dao = this.getFoodDAO(stack);
 		if (dao != null) {
