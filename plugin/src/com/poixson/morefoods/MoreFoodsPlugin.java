@@ -162,6 +162,20 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 			states.add(this.foodDefault("Rotten Apple",  11                         ));
 			cfg.set("APPLE", states);
 		}
+		// corn
+		{
+			List<Map<String, Object>> states = new ArrayList<Map<String, Object>>();
+			states.add(this.foodDefault("Carrot",  0, 11, 22));
+			states.add(this.foodDefault("Corn",   11        ));
+			cfg.set("CARROT", states);
+		}
+		// ritz
+		{
+			List<Map<String, Object>> states = new ArrayList<Map<String, Object>>();
+			states.add(this.foodDefault("Bread",  0, 11, 22));
+			states.add(this.foodDefault("Ritz",   11       ));
+			cfg.set("BREAD", states);
+		}
 	}
 	protected Map<String, Object> foodDefault(final String name, final int model) {
 		return this.foodDefault(name, model, -1, -1);
