@@ -12,3 +12,7 @@ fi
 
 
 \sha1sum MoreFoods-resourcepack.zip > MoreFoods-resourcepack.sha1  || exit 1
+
+
+\cp  MoreFoods-resourcepack.zip   plugin/resources/
+\cp  MoreFoods-resourcepack.sha1  plugin/resources/
