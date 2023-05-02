@@ -259,4 +259,51 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 
 
 
+	public ItemFreshness getFreshness(final ItemStack stack) {
+		final int model = ItemUtils.GetCustomModel(stack);
+		final Set<CustomFoodDAO> daos = this.foods.get(stack.getType());
+		if (daos == null) return null;
+		if (model == 0) return ItemFreshness.FRESH;
+		for (final CustomFoodDAO dao : daos) {
+			if (dao.next == model
+			&& dao.model == 0)
+				return ItemFreshness.UNFRESH;
+		}
+		for (final CustomFoodDAO dao : daos) {
+			if (dao.model == model) {
+				return (
+					dao.next < 0
+					? ItemFreshness.ROTTEN
+					: ItemFreshness.ROTTING
+				);
+			}
+		}
+		return null;
+	}
+
+	public boolean isFresh(final ItemStack stack) {
+		final ItemFreshness freshness = this.getFreshness(stack);
+		if (freshness == null) return false;
+		return ItemFreshness.FRESH.equals(freshness);
+	}
+	public boolean isUnfresh(final ItemStack stack) {
+		final ItemFreshness freshness = this.getFreshness(stack);
+		if (freshness == null) return false;
+		return ItemFreshness.UNFRESH.equals(freshness);
+	}
+	public boolean isRotting(final ItemStack stack) {
+		final ItemFreshness freshness = this.getFreshness(stack);
+		if (freshness == null)
+			return false;
+		return ItemFreshness.ROTTING.equals(freshness);
+	}
+	public boolean isFullyRotten(final ItemStack stack) {
+		final ItemFreshness freshness = this.getFreshness(stack);
+		if (freshness == null)
+			return false;
+		return ItemFreshness.ROTTEN.equals(freshness);
+	}
+
+
+
 }
