@@ -171,7 +171,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 		cfg.addDefault("Chance", Double.valueOf(DEFAULT_AGING_CHANCE));
 	}
 	protected void foodsDefaults(final FileConfiguration cfg) {
-		// apple
+		// apple -> rotten apple
 		{
 			List<Map<String, Object>> states = new ArrayList<Map<String, Object>>();
 			states.add(this.foodDefault("Apple",          0,  8, DEFAULT_AGING_FACTOR));
@@ -181,18 +181,18 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 			states.add(this.foodDefault("Rotten Apple",  11                          ));
 			cfg.set("APPLE", states);
 		}
-		// corn
+		// carrot -> corn
 		{
 			List<Map<String, Object>> states = new ArrayList<Map<String, Object>>();
-			states.add(this.foodDefault("Carrot",  0, 11, 22));
-			states.add(this.foodDefault("Corn",   11        ));
+			states.add(this.foodDefault("Carrot", 0, 11, 14)); // 7 hours
+			states.add(this.foodDefault("Corn",  11        ));
 			cfg.set("CARROT", states);
 		}
-		// ritz
+		// bread -> ritz
 		{
 			List<Map<String, Object>> states = new ArrayList<Map<String, Object>>();
-			states.add(this.foodDefault("Bread",  0, 11, 22));
-			states.add(this.foodDefault("Ritz",   11       ));
+			states.add(this.foodDefault("Bread", 0, 11, 8)); // 4 hours
+			states.add(this.foodDefault("Ritz", 11       ));
 			cfg.set("BREAD", states);
 		}
 	}
