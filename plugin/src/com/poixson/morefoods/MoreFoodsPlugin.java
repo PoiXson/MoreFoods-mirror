@@ -24,7 +24,7 @@ import com.poixson.tools.xTime;
 
 public class MoreFoodsPlugin extends xJavaPlugin {
 	@Override public int getSpigotPluginID() { return 108357; }
-	@Override public int getBStatsID() {       return 17853;  }
+	@Override public int getBStatsID() {       return 18356;  }
 	public static final String LOG_PREFIX  = "[Foods] ";
 	public static final String CHAT_PREFIX = ChatColor.AQUA + "[Foods] " + ChatColor.WHITE;
 
