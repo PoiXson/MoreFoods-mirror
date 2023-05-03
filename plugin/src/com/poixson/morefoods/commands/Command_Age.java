@@ -46,7 +46,7 @@ public class Command_Age extends pxnCommand<MoreFoodsPlugin> {
 					for (final CustomFoodDAO dao : states) {
 						if (dao.model == model) {
 							int modelNew = model;
-							for (int i=0; i<10; i++) {
+							for (int i=0; i<100; i++) {
 								if (!this.plugin.getAgeHandler().ageItem(stack)) {
 									sender.sendMessage(CHAT_PREFIX + "The item in your main hand cannot be aged");
 									return false;
