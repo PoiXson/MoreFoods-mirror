@@ -52,17 +52,14 @@ public class MoreFoodsAPI {
 
 
 
-	public boolean isFresh(final ItemStack stack) {
+	public Boolean isFresh(final ItemStack stack) {
 		return this.plugin.isFresh(stack);
 	}
-	public boolean isUnfresh(final ItemStack stack) {
+	public Boolean isUnfresh(final ItemStack stack) {
 		return this.plugin.isUnfresh(stack);
 	}
-	public boolean isRotting(final ItemStack stack) {
-		return this.plugin.isRotting(stack);
-	}
-	public boolean isFullyRotten(final ItemStack stack) {
-		return this.plugin.isFullyRotten(stack);
+	public Boolean isFullyAged(final ItemStack stack) {
+		return this.plugin.isFullyAged(stack);
 	}
 
 

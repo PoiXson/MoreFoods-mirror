@@ -254,54 +254,51 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 	}
 
 	public boolean isSupportedFood(final ItemStack stack) {
-		return (this.foods.containsKey(stack.getType()));
+		if (stack == null) throw new NullPointerException();
+		return this.foods.containsKey(stack.getType());
 	}
 
 
 
-	public ItemFreshness getFreshness(final ItemStack stack) {
+	public static enum FoodAge {
+		FRESH,
+		UNFRESH,
+		FULLY_AGED,
+	}
+
+	public FoodAge getFoodAge(final ItemStack stack) {
+		if (stack == null) throw new NullPointerException();
 		final int model = ItemUtils.GetCustomModel(stack);
-		final Set<CustomFoodDAO> daos = this.foods.get(stack.getType());
-		if (daos == null) return null;
-		if (model == 0) return ItemFreshness.FRESH;
-		for (final CustomFoodDAO dao : daos) {
-			if (dao.next == model
-			&& dao.model == 0)
-				return ItemFreshness.UNFRESH;
-		}
-		for (final CustomFoodDAO dao : daos) {
-			if (dao.model == model) {
-				return (
-					dao.next < 0
-					? ItemFreshness.ROTTEN
-					: ItemFreshness.ROTTING
-				);
+		if (model == 0) {
+			return (this.isSupportedFood(stack) ? FoodAge.FRESH : null);
+		} else {
+			final Set<CustomFoodDAO> daos = this.foods.get(stack.getType());
+			if (daos == null) return null;
+			for (final CustomFoodDAO dao : daos) {
+				if (dao.model == model)
+					return (dao.next < 0 ? FoodAge.FULLY_AGED : FoodAge.UNFRESH);
 			}
 		}
 		return null;
 	}
 
-	public boolean isFresh(final ItemStack stack) {
-		final ItemFreshness freshness = this.getFreshness(stack);
-		if (freshness == null) return false;
-		return ItemFreshness.FRESH.equals(freshness);
+	public Boolean isFresh(final ItemStack stack) {
+		final FoodAge age = this.getFoodAge(stack);
+		if (age == null)
+			return null;
+		return Boolean.valueOf( FoodAge.FRESH.equals(age) );
 	}
-	public boolean isUnfresh(final ItemStack stack) {
-		final ItemFreshness freshness = this.getFreshness(stack);
-		if (freshness == null) return false;
-		return ItemFreshness.UNFRESH.equals(freshness);
+	public Boolean isUnfresh(final ItemStack stack) {
+		final FoodAge age = this.getFoodAge(stack);
+		if (age == null)
+			return null;
+		return Boolean.valueOf( FoodAge.UNFRESH.equals(age) );
 	}
-	public boolean isRotting(final ItemStack stack) {
-		final ItemFreshness freshness = this.getFreshness(stack);
-		if (freshness == null)
-			return false;
-		return ItemFreshness.ROTTING.equals(freshness);
-	}
-	public boolean isFullyRotten(final ItemStack stack) {
-		final ItemFreshness freshness = this.getFreshness(stack);
-		if (freshness == null)
-			return false;
-		return ItemFreshness.ROTTEN.equals(freshness);
+	public Boolean isFullyAged(final ItemStack stack) {
+		final FoodAge age = this.getFoodAge(stack);
+		if (age == null)
+			return null;
+		return Boolean.valueOf( FoodAge.FULLY_AGED.equals(age) );
 	}
 
 
