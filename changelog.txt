@@ -1,6 +1,14 @@
 MoreFoods - Adds more foods and food aging
 
 
+2023-06-09 - 0.1.6
+==================
+* renamed plugin from FoodRot to MoreFoods
+* added api
+* added command /morefoods age
+* more fixes and improvements
+
+
 2023-03-04 - 0.1.1
 ==================
 * initial release
