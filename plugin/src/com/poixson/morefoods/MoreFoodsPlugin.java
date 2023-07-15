@@ -2,7 +2,6 @@ package com.poixson.morefoods;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -172,29 +171,23 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 	}
 	protected void foodsDefaults(final FileConfiguration cfg) {
 		// apple -> rotten apple
-		{
-			List<Map<String, Object>> states = new ArrayList<Map<String, Object>>();
-			states.add(this.foodDefault("Apple",          0,  8, DEFAULT_AGING_FACTOR));
-			states.add(this.foodDefault("Unfresh Apple",  8,  9, DEFAULT_AGING_FACTOR));
-			states.add(this.foodDefault("Old Apple",      9, 10, DEFAULT_AGING_FACTOR));
-			states.add(this.foodDefault("Rotting Apple", 10, 11, DEFAULT_AGING_FACTOR));
-			states.add(this.foodDefault("Rotten Apple",  11                          ));
-			cfg.set("APPLE", states);
-		}
+		cfg.set("APPLE", (new FoodBuilder())
+			.addStage("Apple",          0,  8, DEFAULT_AGING_FACTOR)
+			.addStage("Unfresh Apple",  8,  9, DEFAULT_AGING_FACTOR)
+			.addStage("Old Apple",      9, 10, DEFAULT_AGING_FACTOR)
+			.addStage("Rotting Apple", 10, 11, DEFAULT_AGING_FACTOR)
+			.addStage("Rotten Apple",  11                          )
+			.build());
 		// carrot -> corn
-		{
-			List<Map<String, Object>> states = new ArrayList<Map<String, Object>>();
-			states.add(this.foodDefault("Carrot", 0, 11, 14)); // 7 hours
-			states.add(this.foodDefault("Corn",  11        ));
-			cfg.set("CARROT", states);
-		}
+		cfg.set("CARROT", (new FoodBuilder())
+			.addStage("Carrot", 0, 11, 14) // 7 hours
+			.addStage("Corn",  11        )
+			.build());
 		// bread -> ritz
-		{
-			List<Map<String, Object>> states = new ArrayList<Map<String, Object>>();
-			states.add(this.foodDefault("Bread", 0, 11, 8)); // 4 hours
-			states.add(this.foodDefault("Ritz", 11       ));
-			cfg.set("BREAD", states);
-		}
+		cfg.set("BREAD", (new FoodBuilder())
+			.addStage("Bread", 0, 11, 8) // 4 hours
+			.addStage("Ritz", 11       )
+			.build());
 	}
 	protected Map<String, Object> foodDefault(final String name, final int model) {
 		return this.foodDefault(name, model, -1, -1);
