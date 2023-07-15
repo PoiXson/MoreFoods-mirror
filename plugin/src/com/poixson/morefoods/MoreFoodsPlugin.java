@@ -135,7 +135,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 			// load food states
 			int count_states = 0;
 			for (final String key : cfg.getKeys(false)) {
-				final Material type = Material.getMaterial(key);
+				final Material type = Material.matchMaterial(key);
 				final HashSet<CustomFoodDAO> states = new HashSet<CustomFoodDAO>();
 				final List<Map<String, Object>> list = Safe_GetStatesList(cfg, key);
 				for (final Map<String, Object> map : list) {
