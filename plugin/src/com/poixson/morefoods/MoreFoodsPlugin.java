@@ -188,6 +188,11 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 			.addStage("Bread", 0, 11, 8) // 4 hours
 			.addStage("Ritz", 11       )
 			.build());
+		// rotten flesh -> poop
+		cfg.set("ROTTEN_FLESH", (new FoodBuilder())
+			.addStage("Rotten Flesh", 0, 6, 5) // 2 hours
+			.addStage("Poop", 6              )
+			.build());
 	}
 	protected Map<String, Object> foodDefault(final String name, final int model) {
 		return this.foodDefault(name, model, -1, -1);
