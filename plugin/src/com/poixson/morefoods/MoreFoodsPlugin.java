@@ -15,8 +15,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 
-import com.poixson.commonmc.tools.plugin.xJavaPlugin;
-import com.poixson.commonmc.utils.ItemUtils;
+import com.poixson.pluginlib.tools.plugin.xJavaPlugin;
+import com.poixson.pluginlib.utils.ItemUtils;
 import com.poixson.morefoods.commands.Commands;
 import com.poixson.tools.xTime;
 

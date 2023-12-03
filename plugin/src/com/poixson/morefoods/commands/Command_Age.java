@@ -9,8 +9,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.poixson.commonmc.tools.commands.pxnCommand;
-import com.poixson.commonmc.utils.ItemUtils;
+import com.poixson.pluginlib.tools.commands.pxnCommand;
+import com.poixson.pluginlib.utils.ItemUtils;
 import com.poixson.morefoods.CustomFoodDAO;
 import com.poixson.morefoods.MoreFoodsPlugin;
 import com.poixson.utils.Utils;

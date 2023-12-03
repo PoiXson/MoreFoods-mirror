@@ -1,6 +1,6 @@
 package com.poixson.morefoods;
 
-import com.poixson.commonmc.tools.plugin.xListener;
+import com.poixson.pluginlib.tools.plugin.xListener;
 
 
 public class FoodEatListener extends xListener<MoreFoodsPlugin> {
