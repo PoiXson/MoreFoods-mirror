@@ -1,6 +1,7 @@
 package com.poixson.morefoods.commands;
 
 import static com.poixson.morefoods.MoreFoodsPlugin.CHAT_PREFIX;
+import static com.poixson.utils.Utils.IsEmpty;
 
 import java.util.Set;
 
@@ -13,7 +14,6 @@ import com.poixson.pluginlib.tools.commands.pxnCommand;
 import com.poixson.pluginlib.utils.ItemUtils;
 import com.poixson.morefoods.CustomFoodDAO;
 import com.poixson.morefoods.MoreFoodsPlugin;
-import com.poixson.utils.Utils;
 
 
 public class Command_Age extends pxnCommand<MoreFoodsPlugin> {
@@ -41,7 +41,7 @@ public class Command_Age extends pxnCommand<MoreFoodsPlugin> {
 			final ItemStack stack = inventory.getItemInMainHand();
 			if (stack != null) {
 				final Set<CustomFoodDAO> states = this.plugin.getFood(stack.getType());
-				if (Utils.notEmpty(states)) {
+				if (!IsEmpty(states)) {
 					final int model = ItemUtils.GetCustomModel(stack);
 					for (final CustomFoodDAO dao : states) {
 						if (dao.model == model) {
