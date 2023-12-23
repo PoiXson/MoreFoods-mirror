@@ -1,7 +1,7 @@
 package com.poixson.morefoods.commands;
 
-import com.poixson.pluginlib.tools.commands.pxnCommandsHandler;
 import com.poixson.morefoods.MoreFoodsPlugin;
+import com.poixson.tools.commands.pxnCommandsHandler;
 
 
 public class Commands extends pxnCommandsHandler<MoreFoodsPlugin> {

@@ -15,10 +15,10 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 
-import com.poixson.pluginlib.tools.plugin.xJavaPlugin;
-import com.poixson.pluginlib.utils.ItemUtils;
 import com.poixson.morefoods.commands.Commands;
+import com.poixson.tools.xJavaPlugin;
 import com.poixson.tools.xTime;
+import com.poixson.utils.ItemUtils;
 
 
 public class MoreFoodsPlugin extends xJavaPlugin {
@@ -149,7 +149,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 				}
 				this.foods.put(type, states);
 			}
-			LOG.info(String.format(
+			this.log().info(String.format(
 				"%sLoaded %d foods with %d states",
 				LOG_PREFIX,
 				Integer.valueOf(this.foods.size()),

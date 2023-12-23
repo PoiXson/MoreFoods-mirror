@@ -10,10 +10,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.poixson.pluginlib.tools.commands.pxnCommand;
-import com.poixson.pluginlib.utils.ItemUtils;
 import com.poixson.morefoods.CustomFoodDAO;
 import com.poixson.morefoods.MoreFoodsPlugin;
+import com.poixson.tools.commands.pxnCommand;
+import com.poixson.utils.ItemUtils;
 
 
 public class Command_Age extends pxnCommand<MoreFoodsPlugin> {
