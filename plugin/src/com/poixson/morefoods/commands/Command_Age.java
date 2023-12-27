@@ -1,6 +1,7 @@
 package com.poixson.morefoods.commands;
 
 import static com.poixson.morefoods.MoreFoodsPlugin.CHAT_PREFIX;
+import static com.poixson.utils.BlockUtils.GetCustomModel;
 import static com.poixson.utils.Utils.IsEmpty;
 
 import java.util.Set;
@@ -13,7 +14,6 @@ import org.bukkit.inventory.PlayerInventory;
 import com.poixson.morefoods.CustomFoodDAO;
 import com.poixson.morefoods.MoreFoodsPlugin;
 import com.poixson.tools.commands.pxnCommand;
-import com.poixson.utils.ItemUtils;
 
 
 public class Command_Age extends pxnCommand<MoreFoodsPlugin> {
@@ -42,7 +42,7 @@ public class Command_Age extends pxnCommand<MoreFoodsPlugin> {
 			if (stack != null) {
 				final Set<CustomFoodDAO> states = this.plugin.getFood(stack.getType());
 				if (!IsEmpty(states)) {
-					final int model = ItemUtils.GetCustomModel(stack);
+					final int model = GetCustomModel(stack);
 					for (final CustomFoodDAO dao : states) {
 						if (dao.model == model) {
 							int modelNew = model;
@@ -51,7 +51,7 @@ public class Command_Age extends pxnCommand<MoreFoodsPlugin> {
 									sender.sendMessage(CHAT_PREFIX + "The item in your main hand cannot be aged");
 									return false;
 								}
-								modelNew = ItemUtils.GetCustomModel(stack);
+								modelNew = GetCustomModel(stack);
 								if (model != modelNew)
 									break;
 							}

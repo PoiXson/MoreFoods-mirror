@@ -1,5 +1,7 @@
 package com.poixson.morefoods;
 
+import static com.poixson.utils.BlockUtils.GetCustomModel;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -18,7 +20,6 @@ import org.bukkit.inventory.ItemStack;
 import com.poixson.morefoods.commands.Commands;
 import com.poixson.tools.xJavaPlugin;
 import com.poixson.tools.xTime;
-import com.poixson.utils.ItemUtils;
 
 
 public class MoreFoodsPlugin extends xJavaPlugin {
@@ -237,7 +238,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 
 	public CustomFoodDAO getFoodDAO(final ItemStack stack) {
 		final Material type = stack.getType();
-		final int model = ItemUtils.GetCustomModel(stack);
+		final int model = GetCustomModel(stack);
 		return this.getFoodDAO(type, model);
 	}
 	public CustomFoodDAO getFoodDAO(final Material type, final int model) {
@@ -266,7 +267,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 
 	public FoodAge getFoodAge(final ItemStack stack) {
 		if (stack == null) throw new NullPointerException();
-		final int model = ItemUtils.GetCustomModel(stack);
+		final int model = GetCustomModel(stack);
 		if (model == 0) {
 			return (this.isSupportedFood(stack) ? FoodAge.FRESH : null);
 		} else {
