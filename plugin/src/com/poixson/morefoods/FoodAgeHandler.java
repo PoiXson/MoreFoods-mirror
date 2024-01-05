@@ -13,8 +13,8 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.poixson.tools.xRand;
 import com.poixson.tools.abstractions.xStartStop;
-import com.poixson.utils.RandomUtils;
 
 
 public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
@@ -73,7 +73,7 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 	public boolean ageItemRandom(final ItemStack stack) {
 		// random ticks
 		if (this.chance > 1) {
-			final int rnd = RandomUtils.GetNewRandom(0, this.chance * 1000, this.rndLast.get()) % this.chance;
+			final int rnd = xRand.Get(0, this.chance * 1000).nextInt() % this.chance;
 			this.rndLast.set(rnd);
 			if (rnd != 0) return false;
 		}
