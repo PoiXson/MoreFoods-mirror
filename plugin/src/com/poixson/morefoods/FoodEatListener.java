@@ -3,7 +3,7 @@ package com.poixson.morefoods;
 import com.poixson.tools.events.xListener;
 
 
-public class FoodEatListener extends xListener<MoreFoodsPlugin> {
+public class FoodEatListener extends xListener {
 
 
 
