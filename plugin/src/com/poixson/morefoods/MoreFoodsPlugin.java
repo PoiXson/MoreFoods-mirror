@@ -77,6 +77,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 				previous.unregister();
 			commands.register();
 		}
+		this.saveConfigs();
 	}
 
 	@Override
@@ -118,7 +119,6 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 			this.config.set(cfg);
 			this.configDefaults(cfg);
 			cfg.options().copyDefaults(true);
-			super.saveConfig();
 		}
 		// foods.yml
 		{
