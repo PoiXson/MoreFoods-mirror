@@ -179,6 +179,11 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 			.addStage("Rotting Apple", 10, 11, DEFAULT_AGING_FACTOR)
 			.addStage("Rotten Apple",  11                          )
 			.build());
+		// sweet berries -> beans
+		cfg.set("SWEET_BERRIES", (new FoodBuilder())
+			.addStage("Sweet Berries", 0, 15, 2) // 3 hours
+			.addStage("Beans", 57              )
+			.build());
 		// carrot -> corn
 		cfg.set("CARROT", (new FoodBuilder())
 			.addStage("Carrot", 0, 11, 14) // 7 hours
