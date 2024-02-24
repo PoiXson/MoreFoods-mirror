@@ -4,11 +4,6 @@
 		"layer0": "item/carrot"
 	},
 	"overrides": [
-		{
-			"predicate": {
-				"custom_model_data": 11
-			},
-			"model": "item/corn"
-		}
+		{ "predicate": { "custom_model_data": 11 }, "model": "morefoods:food/corn" }
 	]
 }

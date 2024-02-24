@@ -4,11 +4,6 @@
 		"layer0": "item/bread"
 	},
 	"overrides": [
-		{
-			"predicate": {
-				"custom_model_data": 11
-			},
-			"model": "item/ritz"
-		}
+		{ "predicate": { "custom_model_data": 11 }, "model": "morefoods:food/ritz" }
 	]
 }

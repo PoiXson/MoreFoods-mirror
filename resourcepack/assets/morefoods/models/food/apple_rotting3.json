@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "item/apple_rotting3"
+		"layer0": "morefoods:food/apple_rotting3"
 	}
 }

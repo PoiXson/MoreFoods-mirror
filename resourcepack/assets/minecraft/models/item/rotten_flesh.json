@@ -4,11 +4,6 @@
 		"layer0": "item/rotten_flesh"
 	},
 	"overrides": [
-		{
-			"predicate": {
-				"custom_model_data": 6
-			},
-			"model": "item/poop"
-		}
+		{ "predicate": { "custom_model_data": 6 }, "model": "morefoods:food/poop" }
 	]
 }

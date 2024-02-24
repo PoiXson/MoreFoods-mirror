@@ -1,10 +1,10 @@
 {
 	"textures": {
-		"2": "item/beans-side-label",
-		"3": "item/beans-side-blank",
-		"4": "item/beans-lid-top",
-		"5": "item/can-bottom",
-		"particle": "item/beans-side-blank"
+		"2": "morefoods:food/beans-side-label",
+		"3": "morefoods:food/beans-side-blank",
+		"4": "morefoods:food/can-top",
+		"5": "morefoods:food/can-bottom",
+		"particle": "morefoods:food/beans-side-blank"
 	},
 	"elements": [
 		{

@@ -1,6 +1,6 @@
 {
 	"textures": {
-		"0": "item/poop"
+		"0": "morefoods:food/poop"
 	},
 	"elements": [
 		{

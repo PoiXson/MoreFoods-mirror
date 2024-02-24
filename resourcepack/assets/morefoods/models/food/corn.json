@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "item/corn"
+		"layer0": "morefoods:food/corn"
 	}
 }

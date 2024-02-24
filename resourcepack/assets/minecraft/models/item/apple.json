@@ -4,29 +4,9 @@
 		"layer0": "item/apple"
 	},
 	"overrides": [
-		{
-			"predicate": {
-				"custom_model_data": 8
-			},
-			"model": "item/apple_rotting1"
-		},
-		{
-			"predicate": {
-				"custom_model_data": 9
-			},
-			"model": "item/apple_rotting2"
-		},
-		{
-			"predicate": {
-				"custom_model_data": 10
-			},
-			"model": "item/apple_rotting3"
-		},
-		{
-			"predicate": {
-				"custom_model_data": 11
-			},
-			"model": "item/apple_rotten"
-		}
+		{ "predicate": { "custom_model_data":  8 }, "model": "morefoods:food/apple_rotting1" },
+		{ "predicate": { "custom_model_data":  9 }, "model": "morefoods:food/apple_rotting2" },
+		{ "predicate": { "custom_model_data": 10 }, "model": "morefoods:food/apple_rotting3" },
+		{ "predicate": { "custom_model_data": 11 }, "model": "morefoods:food/apple_rotten"   }
 	]
 }

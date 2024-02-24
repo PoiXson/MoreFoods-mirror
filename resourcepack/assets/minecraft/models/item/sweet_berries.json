@@ -4,11 +4,6 @@
 		"layer0": "minecraft:item/sweet_berries"
 	},
 	"overrides": [
-		{
-			"predicate": {
-				"custom_model_data": 57
-			},
-			"model": "item/beans"
-		}
+		{ "predicate": { "custom_model_data": 57 }, "model": "morefoods:food/beans" }
 	]
 }
