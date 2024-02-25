@@ -4,7 +4,7 @@
 		"layer0": "minecraft:item/honey_bottle"
 	},
 	"overrides": [
-		{ "predicate": { "custom_model_data": 30017 }, "model": "morefoods:food/almond_water" },
-		{ "predicate": { "custom_model_data": 30018 }, "model": "morefoods:food/moth_jelly"   }
+		{ "predicate": { "custom_model_data": 11 }, "model": "morefoods:food/almond_water" },
+		{ "predicate": { "custom_model_data": 12 }, "model": "morefoods:food/moth_jelly"   }
 	]
 }
