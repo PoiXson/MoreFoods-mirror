@@ -1,5 +1,7 @@
 package com.poixson.morefoods;
 
+import static com.poixson.morefoods.MoreFoodsPlugin.LOG_PREFIX;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.bukkit.Bukkit;
@@ -97,6 +99,10 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 			if (current_factor >= dao.factor) {
 				current_factor = 0;
 				final CustomFoodDAO dao_new = this.plugin.getFoodDAO(stack.getType(), dao.next);
+				if (dao_new == null) {
+					this.plugin.log().warning(String.format("%sNext food age id not found: %d", LOG_PREFIX, Integer.valueOf(dao.next)));
+					return false;
+				}
 				meta.setDisplayName(dao_new.name);
 				meta.setCustomModelData(Integer.valueOf(dao.next));
 			}
