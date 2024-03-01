@@ -1,6 +1,7 @@
 package com.poixson.morefoods;
 
 import static com.poixson.morefoods.MoreFoodsPlugin.LOG_PREFIX;
+import static com.poixson.morefoods.MoreFoodsPlugin.PERSISTENT_AGE_KEY;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -89,7 +90,7 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 			if (dao.next < 0) return false;
 			final ItemMeta meta = stack.getItemMeta();
 			final PersistentDataContainer persistent = meta.getPersistentDataContainer();
-			final NamespacedKey key = new NamespacedKey(this.plugin, "rotting");
+			final NamespacedKey key = new NamespacedKey(this.plugin, PERSISTENT_AGE_KEY);
 			int current_factor = 0;
 			if (persistent.has(key, PersistentDataType.INTEGER)) {
 				final Integer value = persistent.get(key, PersistentDataType.INTEGER);

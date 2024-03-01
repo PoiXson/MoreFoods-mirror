@@ -28,6 +28,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 	public static final String LOG_PREFIX  = "[Foods] ";
 	public static final String CHAT_PREFIX = ChatColor.AQUA + "[Foods] " + ChatColor.WHITE;
 
+	public static final String PERSISTENT_AGE_KEY     = "food_age";
 	public static final String DEFAULT_AGING_INTERVAL = "5m";
 	public static final double DEFAULT_AGING_CHANCE   = 0.164; // about one stage every 2.5 hours
 	public static final int    DEFAULT_AGING_FACTOR   = 5;
