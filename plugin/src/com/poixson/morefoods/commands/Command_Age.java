@@ -34,7 +34,7 @@ public class Command_Age extends pxnCommand<MoreFoodsPlugin> {
 		if (sender instanceof Player) {
 			final Player player = (Player) sender;
 			if (!player.hasPermission("morefoods.agecmd")) {
-				player.sendMessage(CHAT_PREFIX + "You don't have permission to use this command.");
+				player.sendMessage(CHAT_PREFIX+"You don't have permission to use this command.");
 				return true;
 			}
 			final PlayerInventory inventory = player.getInventory();
@@ -48,7 +48,7 @@ public class Command_Age extends pxnCommand<MoreFoodsPlugin> {
 							int modelNew = model;
 							for (int i=0; i<100; i++) {
 								if (!this.plugin.getAgeHandler().ageItem(stack)) {
-									sender.sendMessage(CHAT_PREFIX + "The item in your main hand cannot be aged");
+									sender.sendMessage(CHAT_PREFIX+"The item in your main hand cannot be aged");
 									return false;
 								}
 								modelNew = GetCustomModel(stack);
@@ -60,7 +60,7 @@ public class Command_Age extends pxnCommand<MoreFoodsPlugin> {
 								sender.sendMessage(String.format("%sThe food spoils in your hand, from model %d to %d",
 										CHAT_PREFIX, Integer.valueOf(model), Integer.valueOf(modelNew)));
 							} else {
-								sender.sendMessage(CHAT_PREFIX + "The food spoils in your hand");
+								sender.sendMessage(CHAT_PREFIX+"The food spoils in your hand");
 							}
 							return true;
 						}

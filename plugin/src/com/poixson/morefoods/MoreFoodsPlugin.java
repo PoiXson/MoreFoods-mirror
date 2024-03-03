@@ -25,7 +25,7 @@ import com.poixson.tools.xTime;
 public class MoreFoodsPlugin extends xJavaPlugin {
 	@Override public int getSpigotPluginID() { return 108357; }
 	@Override public int getBStatsID() {       return 18356;  }
-	public static final String CHAT_PREFIX = ChatColor.AQUA + "[Foods] " + ChatColor.WHITE;
+	public static final String CHAT_PREFIX = ChatColor.AQUA+"[Foods] "+ChatColor.WHITE;
 
 	public static final String PERSISTENT_AGE_KEY     = "food_age";
 	public static final String DEFAULT_AGING_INTERVAL = "5m";
