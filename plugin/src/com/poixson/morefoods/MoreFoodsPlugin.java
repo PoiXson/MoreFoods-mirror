@@ -25,7 +25,6 @@ import com.poixson.tools.xTime;
 public class MoreFoodsPlugin extends xJavaPlugin {
 	@Override public int getSpigotPluginID() { return 108357; }
 	@Override public int getBStatsID() {       return 18356;  }
-	public static final String LOG_PREFIX  = "[Foods] ";
 	public static final String CHAT_PREFIX = ChatColor.AQUA + "[Foods] " + ChatColor.WHITE;
 
 	public static final String PERSISTENT_AGE_KEY     = "food_age";
@@ -152,8 +151,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 				this.foods.put(type, states);
 			}
 			this.log().info(String.format(
-				"%sLoaded %d foods with %d states",
-				LOG_PREFIX,
+				"Loaded %d foods with %d states",
 				Integer.valueOf(this.foods.size()),
 				Integer.valueOf(count_states)
 			));
