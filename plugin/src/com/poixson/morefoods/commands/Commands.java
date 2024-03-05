@@ -9,7 +9,7 @@ public class Commands extends pxnCommandsHandler<MoreFoodsPlugin> {
 
 
 	public Commands(final MoreFoodsPlugin plugin) {
-		super(plugin,
+		super(
 			"morefoods"
 		);
 		this.addCommand(new Command_Age(plugin));

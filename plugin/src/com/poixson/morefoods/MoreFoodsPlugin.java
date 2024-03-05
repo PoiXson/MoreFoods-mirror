@@ -67,7 +67,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 			final FoodEatListener previous = this.eatListener.getAndSet(listener);
 			if (previous != null)
 				previous.unregister();
-			listener.register();
+			listener.register(this);
 		}
 		// commands
 		{
@@ -75,7 +75,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 			final Commands previous = this.commands.getAndSet(commands);
 			if (previous != null)
 				previous.unregister();
-			commands.register();
+			commands.register(this);
 		}
 		this.saveConfigs();
 	}

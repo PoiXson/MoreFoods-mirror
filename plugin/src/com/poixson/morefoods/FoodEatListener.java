@@ -1,14 +1,18 @@
 package com.poixson.morefoods;
 
+import org.bukkit.plugin.java.JavaPlugin;
+
 import com.poixson.tools.events.xListener;
 
 
-public class FoodEatListener extends xListener {
+public class FoodEatListener implements xListener {
+
+	protected final JavaPlugin plugin;
 
 
 
-	public FoodEatListener(final MoreFoodsPlugin plugin) {
-		super(plugin);
+	public FoodEatListener(final JavaPlugin plugin) {
+		this.plugin = plugin;
 	}
 
 
