@@ -193,6 +193,10 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 			.addStage("Bread", 0, 11, 8) // 4 hours
 			.addStage("Ritz", 11       )
 			.build());
+		cfg.set("COOKIE", (new FoodBuilder())
+			.addStage("Cookie",         0, 88, 4) // 2 hours
+			.addStage("Cookie Crumbs", 88       )
+			.build());
 		// rotten flesh -> poop
 		cfg.set("ROTTEN_FLESH", (new FoodBuilder())
 			.addStage("Rotten Flesh", 0, 6, 5) // 2 hours
