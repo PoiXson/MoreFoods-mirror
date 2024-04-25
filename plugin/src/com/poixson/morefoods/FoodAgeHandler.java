@@ -27,6 +27,8 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 
 	protected final long interval;
 	protected final int  chance;
+
+	protected final xRand random = new xRand();
 	protected final AtomicInteger rndLast = new AtomicInteger(-1);
 
 
@@ -75,7 +77,7 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 	public boolean ageItemRandom(final ItemStack stack) {
 		// random ticks
 		if (this.chance > 1) {
-			final int rnd = xRand.Get(0, this.chance * 1000).nextInt() % this.chance;
+			final int rnd = this.random.nextInt(0, this.chance * 1000) % this.chance;
 			this.rndLast.set(rnd);
 			if (rnd != 0) return false;
 		}
