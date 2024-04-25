@@ -11,6 +11,15 @@ commands:
     morefoods:
         description: "Food commands"
         usage: "Usage: /morefoods <command>"
+    morefood:
+        description: "Food commands"
+        usage: "Usage: /morefood <command>"
+    foods:
+        description: "Food commands"
+        usage: "Usage: /foods <command>"
+    food:
+        description: "Food commands"
+        usage: "Usage: /food <command>"
 permission-message: "You don't have permission to use this command."
 permissions:
     morefoods.*:

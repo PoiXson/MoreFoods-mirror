@@ -13,24 +13,27 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.poixson.morefoods.CustomFoodDAO;
 import com.poixson.morefoods.MoreFoodsPlugin;
-import com.poixson.tools.commands.pxnCommand;
+import com.poixson.tools.commands.xCMD_Labels;
 
 
-public class Command_Age extends pxnCommand<MoreFoodsPlugin> {
+public class Command_Age extends xCMD_Labels {
+
+	protected final MoreFoodsPlugin plugin;
 
 
 
 	public Command_Age(final MoreFoodsPlugin plugin) {
-		super(plugin,
+		super(
 			"age",
 			"rot"
 		);
+		this.plugin = plugin;
 	}
 
 
 
 	@Override
-	public boolean run(final CommandSender sender, final String label, final String[] args) {
+	public boolean run(final CommandSender sender, final String[] args) {
 		if (sender instanceof Player) {
 			final Player player = (Player) sender;
 			if (!player.hasPermission("morefoods.agecmd")) {
@@ -46,14 +49,15 @@ public class Command_Age extends pxnCommand<MoreFoodsPlugin> {
 					for (final CustomFoodDAO dao : states) {
 						if (dao.model == model) {
 							int modelNew = model;
+							LOOP_I:
 							for (int i=0; i<100; i++) {
 								if (!this.plugin.getAgeHandler().ageItem(stack)) {
 									sender.sendMessage(CHAT_PREFIX+"The item in your main hand cannot be aged");
-									return false;
+									return true;
 								}
 								modelNew = GetCustomModel(stack);
 								if (model != modelNew)
-									break;
+									break LOOP_I;
 							}
 							inventory.setItemInMainHand(stack);
 							if (player.hasPermission("morefoods.details")) {
