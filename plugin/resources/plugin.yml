@@ -20,19 +20,22 @@ commands:
     food:
         description: "Food commands"
         usage: "Usage: /food <command>"
-permission-message: "You don't have permission to use this command."
 permissions:
     morefoods.*:
         default: op
         description: Gives access to all food commands
         children:
+            morefoods.detailed: true
             morefoods.aging: true
+            morefoods.cmd.age: true
+            morefoods.cmd.info: true
+    morefoods.detailed:
     morefoods.aging:
         default: true
         description: Food stored in a players inventory or hotbar will age
-    morefoods.details:
+    morefoods.cmd.age:
         default: op
-        description: Display the item model in messages
-    morefoods.agecmd:
+        description: Force the food in your hand to age with a command
+    morefoods.cmd.info:
         default: op
-        description: Force the food in your hand to age
+        description: Display the item model

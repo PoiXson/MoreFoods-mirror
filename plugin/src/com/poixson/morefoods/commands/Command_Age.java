@@ -36,8 +36,8 @@ public class Command_Age extends xCMD_Labels {
 	public boolean run(final CommandSender sender, final String[] args) {
 		if (sender instanceof Player) {
 			final Player player = (Player) sender;
-			if (!player.hasPermission("morefoods.agecmd")) {
-				player.sendMessage(CHAT_PREFIX+"You don't have permission to use this command.");
+			if (!player.hasPermission("morefoods.cmd.age")) {
+				player.sendMessage("You don't have permission to use this command.");
 				return true;
 			}
 			final PlayerInventory inventory = player.getInventory();
@@ -60,9 +60,9 @@ public class Command_Age extends xCMD_Labels {
 									break LOOP_I;
 							}
 							inventory.setItemInMainHand(stack);
-							if (player.hasPermission("morefoods.details")) {
+							if (player.hasPermission("morefoods.detailed")) {
 								sender.sendMessage(String.format("%sThe food spoils in your hand, from model %d to %d",
-										CHAT_PREFIX, Integer.valueOf(model), Integer.valueOf(modelNew)));
+									CHAT_PREFIX, Integer.valueOf(model), Integer.valueOf(modelNew)));
 							} else {
 								sender.sendMessage(CHAT_PREFIX+"The food spoils in your hand");
 							}
