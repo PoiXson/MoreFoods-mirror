@@ -6,7 +6,8 @@ import com.poixson.tools.commands.xCMD_Children;
 
 public class Command_MoreFoods extends xCMD_Children {
 
-	protected final Command_Age cmd_age;
+	protected final Command_Age  cmd_age;
+	protected final Command_Info cmd_info;
 
 
 
@@ -17,7 +18,8 @@ public class Command_MoreFoods extends xCMD_Children {
 			"foods",
 			"food"
 		);
-		this.addCommand(this.cmd_age = new Command_Age(plugin));
+		this.addCommand(this.cmd_age  = new Command_Age(plugin));
+		this.addCommand(this.cmd_info = new Command_Info(plugin));
 	}
 
 
