@@ -1,18 +1,26 @@
 package com.poixson.morefoods.commands;
 
+import java.io.Closeable;
+
 import com.poixson.morefoods.MoreFoodsPlugin;
-import com.poixson.tools.commands.xCMD_Handler;
 
 
-public class Commands extends xCMD_Handler {
+public class Commands implements Closeable {
 
+	// /morefoods
 	protected final Command_MoreFoods cmd_morefoods;
 
 
 
 	public Commands(final MoreFoodsPlugin plugin) {
-		super(plugin);
-		this.addCommand(this.cmd_morefoods = new Command_MoreFoods(plugin));
+		this.cmd_morefoods = new Command_MoreFoods(plugin);
+	}
+
+
+
+	@Override
+	public void close() {
+		this.cmd_morefoods.close();
 	}
 
 

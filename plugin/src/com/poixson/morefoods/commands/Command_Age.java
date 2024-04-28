@@ -13,10 +13,10 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.poixson.morefoods.CustomFoodDAO;
 import com.poixson.morefoods.MoreFoodsPlugin;
-import com.poixson.tools.commands.xCMD_Labels;
+import com.poixson.tools.commands.pxnCommand;
 
 
-public class Command_Age extends xCMD_Labels {
+public class Command_Age extends pxnCommand {
 
 	protected final MoreFoodsPlugin plugin;
 
@@ -33,7 +33,7 @@ public class Command_Age extends xCMD_Labels {
 
 
 	@Override
-	public boolean run(final CommandSender sender, final String[] args) {
+	public boolean onCommand(final CommandSender sender, final String[] args) {
 		if (sender instanceof Player) {
 			final Player player = (Player) sender;
 			if (!player.hasPermission("morefoods.cmd.age")) {

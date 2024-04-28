@@ -9,21 +9,25 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.poixson.morefoods.MoreFoodsPlugin;
-import com.poixson.tools.commands.xCMD_Labels;
+import com.poixson.tools.commands.pxnCommand;
 
 
-public class Command_Info extends xCMD_Labels {
+public class Command_Info extends pxnCommand {
 
+	protected final MoreFoodsPlugin plugin;
 
 
 	public Command_Info(final MoreFoodsPlugin plugin) {
-		super("info");
+		super(
+			"info"
+		);
+		this.plugin = plugin;
 	}
 
 
 
 	@Override
-	public boolean run(final CommandSender sender, final String[] args) {
+	public boolean onCommand(final CommandSender sender, final String[] args) {
 //TODO: more info - percent aged
 		if (sender instanceof Player) {
 			final Player player = (Player) sender;

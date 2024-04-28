@@ -7,19 +7,6 @@ depend:
 authors: [ lorenzop ]
 website: ${project.url}
 description: ${project.description}
-commands:
-    morefoods:
-        description: "Food commands"
-        usage: "Usage: /morefoods <command>"
-    morefood:
-        description: "Food commands"
-        usage: "Usage: /morefood <command>"
-    foods:
-        description: "Food commands"
-        usage: "Usage: /foods <command>"
-    food:
-        description: "Food commands"
-        usage: "Usage: /food <command>"
 permissions:
     morefoods.*:
         default: op
