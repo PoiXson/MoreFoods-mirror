@@ -3,25 +3,25 @@ package com.poixson.morefoods.commands;
 import static com.poixson.morefoods.MoreFoodsPlugin.CHAT_PREFIX;
 import static com.poixson.utils.BlockUtils.GetCustomModel;
 
+import java.util.List;
+
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.poixson.morefoods.MoreFoodsPlugin;
 import com.poixson.tools.commands.pxnCommand;
 
 
+// /morefoods info
 public class Command_Info extends pxnCommand {
 
-	protected final MoreFoodsPlugin plugin;
 
 
-	public Command_Info(final MoreFoodsPlugin plugin) {
+	public Command_Info() {
 		super(
 			"info"
 		);
-		this.plugin = plugin;
 	}
 
 
@@ -44,6 +44,15 @@ public class Command_Info extends pxnCommand {
 			}
 		}
 		return false;
+	}
+
+
+
+	@Override
+	public List<String> onTabComplete(final CommandSender sender, final String[] args) {
+//TODO
+System.out.println("TAB:"); for (final String arg : args) System.out.println("  "+arg);
+return null;
 	}
 
 

@@ -74,8 +74,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 			final Commands commands = new Commands(this);
 			final Commands previous = this.commands.getAndSet(commands);
 			if (previous != null)
-				previous.unregister();
-			commands.register(this);
+				previous.close();
 		}
 		this.saveConfigs();
 	}
@@ -87,7 +86,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 		{
 			final Commands commands = this.commands.getAndSet(null);
 			if (commands != null)
-				commands.unregister();
+				commands.close();
 		}
 		// age handler
 		{
@@ -112,7 +111,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 
 	@Override
 	protected void loadConfigs() {
-		this.mkPluginDir();
+		super.loadConfigs();
 		// config.yml
 		{
 			final FileConfiguration cfg = this.getConfig();
@@ -160,12 +159,12 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 
 	@Override
 	protected void saveConfigs() {
-		// config.yml
 		super.saveConfig();
 	}
 
 	@Override
 	protected void configDefaults(final FileConfiguration cfg) {
+		super.configDefaults(cfg);
 		cfg.addDefault("Interval", DEFAULT_AGING_INTERVAL);
 		cfg.addDefault("Chance", Double.valueOf(DEFAULT_AGING_CHANCE));
 	}

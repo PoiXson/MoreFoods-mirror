@@ -4,6 +4,7 @@ import static com.poixson.morefoods.MoreFoodsPlugin.CHAT_PREFIX;
 import static com.poixson.utils.BlockUtils.GetCustomModel;
 import static com.poixson.utils.Utils.IsEmpty;
 
+import java.util.List;
 import java.util.Set;
 
 import org.bukkit.command.CommandSender;
@@ -16,6 +17,7 @@ import com.poixson.morefoods.MoreFoodsPlugin;
 import com.poixson.tools.commands.pxnCommand;
 
 
+// /morefoods age
 public class Command_Age extends pxnCommand {
 
 	protected final MoreFoodsPlugin plugin;
@@ -73,6 +75,15 @@ public class Command_Age extends pxnCommand {
 			}
 		}
 		return false;
+	}
+
+
+
+	@Override
+	public List<String> onTabComplete(final CommandSender sender, final String[] args) {
+//TODO
+System.out.println("TAB:"); for (final String arg : args) System.out.println("  "+arg);
+return null;
 	}
 
 

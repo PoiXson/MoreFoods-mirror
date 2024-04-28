@@ -10,19 +10,21 @@ description: ${project.description}
 permissions:
     morefoods.*:
         default: op
-        description: Gives access to all food commands
+        description: Gives access to all food commands.
         children:
             morefoods.detailed: true
             morefoods.aging: true
             morefoods.cmd.age: true
             morefoods.cmd.info: true
     morefoods.detailed:
+        default: op
+        description: Display the item model when aging food.
     morefoods.aging:
         default: true
-        description: Food stored in a players inventory or hotbar will age
+        description: Food stored in a players inventory or hotbar will age.
     morefoods.cmd.age:
         default: op
-        description: Force the food in your hand to age with a command
+        description: Force the food in your hand to age with a command.
     morefoods.cmd.info:
         default: op
-        description: Display the item model
+        description: Display the item model.
