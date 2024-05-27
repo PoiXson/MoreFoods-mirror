@@ -31,10 +31,7 @@ public class Command_Info extends pxnCommand {
 //TODO: more info - percent aged
 		if (sender instanceof Player) {
 			final Player player = (Player) sender;
-			if (!player.hasPermission("morefoods.cmd.info")) {
-				player.sendMessage("You don't have permission to use this command.");
-				return true;
-			}
+			if (!player.hasPermission("morefoods.cmd.info")) return false;
 			final PlayerInventory inventory = player.getInventory();
 			final ItemStack stack = inventory.getItemInMainHand();
 			if (stack != null) {
