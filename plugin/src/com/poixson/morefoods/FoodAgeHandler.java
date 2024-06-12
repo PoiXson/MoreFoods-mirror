@@ -1,6 +1,7 @@
 package com.poixson.morefoods;
 
 import static com.poixson.morefoods.MoreFoodsPlugin.PERSISTENT_AGE_KEY;
+import static com.poixson.utils.BukkitUtils.SafeCancel;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -48,9 +49,7 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 	}
 	@Override
 	public void stop() {
-		try {
-			this.cancel();
-		} catch (IllegalStateException ignore) {}
+		SafeCancel(this);
 	}
 
 
