@@ -2,7 +2,7 @@ package com.poixson.morefoods;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.poixson.tools.events.xListener;
+import com.poixson.tools.xListener;
 
 
 public class FoodEatListener implements xListener {
