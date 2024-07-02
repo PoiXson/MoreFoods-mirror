@@ -29,7 +29,7 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 	protected final long interval;
 	protected final int  chance;
 
-	protected final xRand random = new xRand();
+	protected final xRand random = (new xRand()).seed_time();
 	protected final AtomicInteger rndLast = new AtomicInteger(-1);
 
 
