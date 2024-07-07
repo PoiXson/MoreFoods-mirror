@@ -1,7 +1,8 @@
 package com.poixson.morefoods;
 
+import static com.poixson.utils.BukkitUtils.Log;
+
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
@@ -11,7 +12,6 @@ import org.bukkit.plugin.ServicesManager;
 
 
 public class MoreFoodsAPI {
-	protected static final Logger LOG = Logger.getLogger("Minecraft");
 
 	protected static final String NAME  = "MoreFoods";
 	protected static final String CLASS = "com.poixson.morefoods.MoreFoodsPlugin";
@@ -40,7 +40,7 @@ public class MoreFoodsAPI {
 			return new MoreFoodsAPI(plugin);
 		} catch (ClassNotFoundException e) {
 			if (errcount_PluginNotFound.getAndIncrement() < 10)
-				LOG.severe("Plugin not found: "+NAME);
+				Log().severe("Plugin not found: "+NAME);
 			return null;
 		}
 	}
