@@ -76,6 +76,9 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 			if (previous != null)
 				previous.close();
 		}
+		// save
+		this.setConfigChanged();
+		this.saveConfigs();
 	}
 
 	@Override
@@ -154,7 +157,6 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 				Integer.valueOf(count_states)
 			));
 		}
-		this.saveConfigs();
 	}
 
 	@Override
