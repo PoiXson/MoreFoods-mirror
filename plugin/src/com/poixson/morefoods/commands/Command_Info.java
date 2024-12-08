@@ -37,14 +37,18 @@ public class Command_Info extends pxnCommand {
 			if (!player.hasPermission("morefoods.cmd.info")) return false;
 			final PlayerInventory inventory = player.getInventory();
 			final ItemStack stack = inventory.getItemInMainHand();
-			if (stack != null) {
+			if (stack == null) return false;
+			if (stack.isEmpty()) {
+				player.sendMessage(CHAT_PREFIX.append(Component.text(
+					"Invalid item").color(NamedTextColor.RED)));
+			} else {
 				final int model = GetCustomModel(stack);
 				player.sendMessage(CHAT_PREFIX
 					.append(Component.text("Model: ").color(NamedTextColor.AQUA))
 					.append(Component.text(model    ).color(NamedTextColor.GOLD))
 				);
-				return true;
 			}
+			return true;
 		}
 		return false;
 	}
