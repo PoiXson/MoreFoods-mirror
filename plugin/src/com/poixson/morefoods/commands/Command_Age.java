@@ -16,6 +16,9 @@ import com.poixson.morefoods.CustomFoodDAO;
 import com.poixson.morefoods.MoreFoodsPlugin;
 import com.poixson.tools.commands.pxnCommand;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+
 
 // /morefoods age
 public class Command_Age extends pxnCommand {
@@ -51,7 +54,8 @@ public class Command_Age extends pxnCommand {
 							LOOP_I:
 							for (int i=0; i<100; i++) {
 								if (!this.plugin.getAgeHandler().ageItem(stack)) {
-									sender.sendMessage(CHAT_PREFIX+"The item in your main hand cannot be aged");
+									sender.sendMessage(CHAT_PREFIX.append(Component.text(
+										"The item in your main hand cannot be aged").color(NamedTextColor.AQUA)));
 									return true;
 								}
 								modelNew = GetCustomModel(stack);
@@ -60,10 +64,15 @@ public class Command_Age extends pxnCommand {
 							}
 							inventory.setItemInMainHand(stack);
 							if (player.hasPermission("morefoods.detailed")) {
-								sender.sendMessage(String.format("%sThe food spoils in your hand, from model %d to %d",
-									CHAT_PREFIX, Integer.valueOf(model), Integer.valueOf(modelNew)));
+								sender.sendMessage(CHAT_PREFIX
+									.append(Component.text("The food spoils in your hand, from model ").color(NamedTextColor.AQUA))
+									.append(Component.text(model                                      ).color(NamedTextColor.GOLD))
+									.append(Component.text(" to "                                     ).color(NamedTextColor.AQUA))
+									.append(Component.text(modelNew                                   ).color(NamedTextColor.GOLD))
+								);
 							} else {
-								sender.sendMessage(CHAT_PREFIX+"The food spoils in your hand");
+								sender.sendMessage(CHAT_PREFIX.append(Component.text(
+									"The food spoils in your hand").color(NamedTextColor.AQUA)));
 							}
 							return true;
 						}

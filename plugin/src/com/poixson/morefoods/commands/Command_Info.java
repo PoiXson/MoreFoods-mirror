@@ -12,6 +12,9 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.poixson.tools.commands.pxnCommand;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+
 
 // /morefoods info
 public class Command_Info extends pxnCommand {
@@ -36,7 +39,10 @@ public class Command_Info extends pxnCommand {
 			final ItemStack stack = inventory.getItemInMainHand();
 			if (stack != null) {
 				final int model = GetCustomModel(stack);
-				player.sendMessage(String.format("%sCurrent model number: %d", CHAT_PREFIX, Integer.valueOf(model)));
+				player.sendMessage(CHAT_PREFIX
+					.append(Component.text("Model: ").color(NamedTextColor.AQUA))
+					.append(Component.text(model    ).color(NamedTextColor.GOLD))
+				);
 				return true;
 			}
 		}

@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -21,11 +20,14 @@ import com.poixson.morefoods.commands.Commands;
 import com.poixson.tools.xJavaPlugin;
 import com.poixson.tools.xTime;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+
 
 public class MoreFoodsPlugin extends xJavaPlugin {
 	@Override public int getSpigotPluginID() { return 108357; }
 	@Override public int getBStatsID() {       return 18356;  }
-	public static final String CHAT_PREFIX = ChatColor.DARK_AQUA+"[Foods] "+ChatColor.WHITE;
+	public static final Component CHAT_PREFIX = Component.text("[Foods] ").color(NamedTextColor.AQUA);
 
 	public static final String PERSISTENT_AGE_KEY     = "food_age";
 	public static final String DEFAULT_AGING_INTERVAL = "5m";
