@@ -19,6 +19,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.poixson.tools.xRand;
 import com.poixson.tools.abstractions.xStartStop;
 
+import net.kyori.adventure.text.Component;
+
 
 public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 
@@ -104,7 +106,7 @@ public class FoodAgeHandler extends BukkitRunnable implements xStartStop {
 					this.plugin.log().warning("Next food age id not found: "+Integer.toString(dao.next));
 					return false;
 				}
-				meta.setDisplayName(dao_new.name);
+				meta.displayName(Component.text(dao_new.name));
 				meta.setCustomModelData(Integer.valueOf(dao.next));
 			}
 //TODO: debug logs
