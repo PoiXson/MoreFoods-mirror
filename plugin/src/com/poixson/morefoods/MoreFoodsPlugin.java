@@ -25,8 +25,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 
 
 public class MoreFoodsPlugin extends xJavaPlugin {
-	@Override public int getSpigotPluginID() { return 108357; }
-	@Override public int getBStatsID() {       return 18356;  }
+	@Override public int getBStatsID() { return 18356; }
 	public static final Component CHAT_PREFIX = Component.text("[Foods] ").color(NamedTextColor.AQUA);
 
 	public static final String PERSISTENT_AGE_KEY     = "food_age";
