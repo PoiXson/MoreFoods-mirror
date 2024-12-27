@@ -19,11 +19,13 @@ public class Command_MoreFoods extends pxnCommandRoot {
 			null, // desc
 			null, // usage
 			null, // perm
-			new String[] { // labels
-				"morefoods",  "morefood",
-				"more-foods", "more-food",
-				"foods",      "food"
-			}
+			// labels
+			"morefoods",
+			"morefood",
+			"more-foods",
+			"more-food",
+			"foods",
+			"food"
 		);
 		this.addCommand(this.cmd_age  = new Command_Age(plugin)); // /morefoods age
 		this.addCommand(this.cmd_info = new Command_Info());      // /morefoods info
