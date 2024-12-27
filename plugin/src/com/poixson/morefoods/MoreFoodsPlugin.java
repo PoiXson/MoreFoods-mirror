@@ -44,7 +44,7 @@ public class MoreFoodsPlugin extends xJavaPlugin {
 
 
 	public MoreFoodsPlugin() {
-		super(MoreFoodsPlugin.class);
+		super();
 	}
 
 
