@@ -1,6 +1,12 @@
 MoreFoods - Adds more foods and food aging
 
 
+2024-12-07 - 0.1.20
+===================
+* Spigot 1.21.1 - Java 21
+* last commit with spigot dependencies - switching to paper api
+
+
 2023-06-09 - 0.1.6
 ==================
 * renamed plugin from FoodRot to MoreFoods
