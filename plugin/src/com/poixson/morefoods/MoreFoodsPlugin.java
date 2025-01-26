@@ -24,7 +24,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 
 
-public class MoreFoodsPlugin extends xJavaPlugin {
+public class MoreFoodsPlugin extends xJavaPlugin<MoreFoodsPlugin> {
 	@Override public int getBStatsID() { return 18356; }
 	public static final Component CHAT_PREFIX = Component.text("[Foods] ").color(NamedTextColor.AQUA);
 
