@@ -13,6 +13,7 @@ import io.papermc.paper.command.brigadier.Commands;
 // /food <cmd>
 public interface CMD_Food extends PluginCommand,
 CMD_Food_Info,
+CMD_Food_Fresh,
 CMD_Food_Rot {
 
 
@@ -21,6 +22,7 @@ CMD_Food_Rot {
 		// /food <cmd>
 		return Commands.literal(CMD_LABELS_FOOD.NODE)
 			.then(CMD_Food_Info .super.register_Food_Info (plugin))  // /food info
+			.then(CMD_Food_Fresh.super.register_Food_Fresh(plugin))  // /food fresh
 			.then(CMD_Food_Rot  .super.register_Food_Rot  (plugin)); // /food rot
 	}
 
