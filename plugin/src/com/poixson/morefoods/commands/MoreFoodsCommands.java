@@ -1,26 +1,28 @@
 package com.poixson.morefoods.commands;
 
-import java.io.Closeable;
+import static com.poixson.morefoods.MoreFoodsDefines.CMD_DESC_FOOD;
+import static com.poixson.morefoods.MoreFoodsDefines.CMD_LABELS_FOOD;
 
 import com.poixson.morefoods.MoreFoodsPlugin;
+import com.poixson.tools.commands.PluginCommandsHolder;
+
+import io.papermc.paper.command.brigadier.Commands;
 
 
-public class Commands implements Closeable {
-
-	// /morefoods
-	protected final Command_MoreFoods cmd_morefoods;
+public class MoreFoodsCommands extends PluginCommandsHolder<MoreFoodsPlugin> implements
+CMD_Food {
 
 
 
-	public Commands(final MoreFoodsPlugin plugin) {
-		this.cmd_morefoods = new Command_MoreFoods(plugin);
+	public MoreFoodsCommands(final MoreFoodsPlugin plugin) {
+		super(plugin);
 	}
 
 
 
 	@Override
-	public void close() {
-		this.cmd_morefoods.close();
+	protected void register_commands(final Commands registrar) {
+		this.register_cmd(registrar, CMD_Food.super.register_Food(this.plugin), CMD_DESC_FOOD.NODE, CMD_LABELS_FOOD.NODES); // /food <cmd>
 	}
 
 

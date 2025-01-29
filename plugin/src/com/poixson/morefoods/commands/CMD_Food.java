@@ -1,34 +1,27 @@
 package com.poixson.morefoods.commands;
 
+import static com.poixson.morefoods.MoreFoodsDefines.CMD_LABELS_FOOD;
+
+import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.poixson.morefoods.MoreFoodsPlugin;
-import com.poixson.tools.commands.pxnCommandRoot;
+import com.poixson.tools.commands.PluginCommand;
+
+import io.papermc.paper.command.brigadier.CommandSourceStack;
+import io.papermc.paper.command.brigadier.Commands;
 
 
-// /morefoods
-public class Command_MoreFoods extends pxnCommandRoot {
-
-	protected final Command_Age  cmd_age;  // /morefoods age
-	protected final Command_Info cmd_info; // /morefoods info
-
+// /food <cmd>
+public interface CMD_Food extends PluginCommand,
+CMD_Food_Info,
+CMD_Food_Rot {
 
 
-	public Command_MoreFoods(final MoreFoodsPlugin plugin) {
-		super(
-			plugin,
-			"morefoods", // namespace
-			null, // desc
-			null, // usage
-			null, // perm
-			// labels
-			"morefoods",
-			"morefood",
-			"more-foods",
-			"more-food",
-			"foods",
-			"food"
-		);
-		this.addCommand(this.cmd_age  = new Command_Age(plugin)); // /morefoods age
-		this.addCommand(this.cmd_info = new Command_Info());      // /morefoods info
+
+	default ArgumentBuilder<CommandSourceStack, ?> register_Food(final MoreFoodsPlugin plugin) {
+		// /food <cmd>
+		return Commands.literal(CMD_LABELS_FOOD.NODE)
+			.then(CMD_Food_Info .super.register_Food_Info (plugin))  // /food info
+			.then(CMD_Food_Rot  .super.register_Food_Rot  (plugin)); // /food rot
 	}
 
 
